@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="actions_group_exclude_server_inherit" model="ir.ui.view">
+            <field name="name">actions.group.exclude.server.inherit</field>
+            <field name="model">ir.actions.server</field>
+            <field name="inherit_id" ref="base.view_server_action_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='groups_id']" position="after">
+                    <label for="excl_groups_id"/>
+                    <field name="excl_groups_id" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="actions_group_exclude_report_inherit" model="ir.ui.view">
+            <field name="name">actions.group.exclude.report.inherit</field>
+            <field name="model">ir.actions.report</field>
+            <field name="inherit_id" ref="base.act_report_xml_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='groups_id']" position="after">
+                    <label for="excl_groups_id"/>
+                    <field name="excl_groups_id" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="actions_group_exclude_window_inherit" model="ir.ui.view">
+            <field name="name">actions.group.exclude.server.inherit</field>
+            <field name="model">ir.actions.act_window</field>
+            <field name="inherit_id" ref="base.view_window_action_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='groups_id']" position="after">
+                    <label for="excl_groups_id"/>
+                    <field name="excl_groups_id" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

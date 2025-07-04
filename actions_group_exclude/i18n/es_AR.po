@@ -1,0 +1,35 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* actions_group_exclude
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20240910\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-04 14:56+0000\n"
+"PO-Revision-Date: 2025-07-04 14:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: actions_group_exclude
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_act_url__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_act_window__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_act_window_close__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_actions__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_client__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_report__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_actions_server__excl_groups_id
+#: model:ir.model.fields,field_description:actions_group_exclude.field_ir_cron__excl_groups_id
+msgid "Excluded Groups"
+msgstr "Grupos Excluidos"
+
+#. module: actions_group_exclude
+#. odoo-python
+#: code:addons/actions_group_exclude/models/ir_action.py:0
+#, python-format
+msgid "You don't have enough access rights to run this action."
+msgstr "No tienes los suficientes derechos de acceso para ejecutar esta acción."
