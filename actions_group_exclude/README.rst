@@ -60,5 +60,3 @@ This module is maintained by the Calyx Servicios S.A.
 
 CALYX SERVICIOS S.A. It is part of the PGK Consultores economic group, member of an important global network, a world organization.
 The PGK Consultores group is one of the 20 largest consultant-studios in Argentina with nearly 300 professionals.
-
-This module is part of the `Rofina <https://github.com/calyx-servicios/rofina>`_ project on GitHub.
