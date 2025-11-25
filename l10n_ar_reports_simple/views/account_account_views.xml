@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="account.view_account_list"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='account_type']" position="after">
-                <field name="l10n_ar_arca_activity_id" invisible="company_id.account_fiscal_country_id.code != 'AR' or account_type in ('asset_receivable', 'liability_payable', 'off_balance')" optional="hide"/>
+                <field name="fiscal_code" column_invisible="1"/>
+                <field name="l10n_ar_arca_activity_id" invisible="fiscal_code != 'AR' or account_type in ('asset_receivable', 'liability_payable', 'off_balance')" optional="hide"/>
             </xpath>
         </field>
     </record>
@@ -17,7 +18,8 @@
         <field name="inherit_id" ref="account.view_account_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='tag_ids']" position="after">
-                <field name="l10n_ar_arca_activity_id" invisible="company_id.account_fiscal_country_id.code != 'AR' or account_type in ('asset_receivable', 'liability_payable', 'off_balance')"/>
+                <field name="fiscal_code" invisible="1"/>
+                <field name="l10n_ar_arca_activity_id" invisible="fiscal_code != 'AR' or account_type in ('asset_receivable', 'liability_payable', 'off_balance')"/>
             </xpath>
         </field>
     </record>

@@ -1,7 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': 'Argentinean Accounting IVA Simple Export',
-    'version': '1.0',
+    'version': '1.1',
     'author': 'Odoo S.A., witdata',
     'category': 'Accounting/Localizations/Reporting',
     'summary': 'IVA Simple Reporting for Argentinean Localization',

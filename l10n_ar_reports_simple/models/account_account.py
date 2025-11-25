@@ -5,6 +5,10 @@ from odoo import fields, models
 class AccountAccount(models.Model):
     _inherit = 'account.account'
 
+    fiscal_code = fields.Char(
+        string='Código fiscal',
+        related="company_id.account_fiscal_country_id.code"
+    )
     l10n_ar_arca_activity_id = fields.Many2one(
         'l10n_ar.arca.activity',
         string='Actividad ARCA asociada',
