@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_group_block_rule_tree" model="ir.ui.view">
+        <field name="name">group.block.rule.tree</field>
+        <field name="model">group.block.rule</field>
+        <field name="arch" type="xml">
+            <tree string="Group block rules" editable="bottom">
+                <field name="active"/>
+                <field name="source_group_id"/>
+                <field name="blocked_group_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_group_block_rule_form" model="ir.ui.view">
+        <field name="name">group.block.rule.form</field>
+        <field name="model">group.block.rule</field>
+        <field name="arch" type="xml">
+            <form string="Group block rule">
+                <sheet>
+                    <group>
+                        <field name="active"/>
+                        <field name="source_group_id"/>
+                        <field name="blocked_group_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_group_block_rule" model="ir.actions.act_window">
+        <field name="name">Group Block Rules</field>
+        <field name="res_model">group.block.rule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_group_block_rule"
+        name="Group Block Rules"
+        parent="base.menu_users"
+        action="action_group_block_rule"
+        groups="base.group_system"
+        sequence="90"
+    />
+</odoo>
