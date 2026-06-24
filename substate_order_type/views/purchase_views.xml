@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="purchase_order_view_form_substate" model="ir.ui.view">
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase_substate.purchase_order_view_form"/>
+        <field name="arch" type="xml">
+            <field name="substate_id" position="attributes">
+                <attribute name="domain">
+                    [
+                        ('model', '=', 'purchase.order'),
+                        ('target_state_value_id.target_state_value', '=', state),
+                        '|',
+                        ('purchase_order_type_ids', '=', False),
+                        ('purchase_order_type_ids', 'in', [order_type])
+                    ]
+                </attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

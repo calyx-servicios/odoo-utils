@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="base_substate_view_form_inherit" model="ir.ui.view">
+        <field name="model">base.substate</field>
+        <field name="inherit_id" ref="base_substate.base_substate_view_form"/>
+        <field name="arch" type="xml">
+            <field name="model" position="after">
+                <field
+                    name="purchase_order_type_ids"
+                    widget="many2many_tags"
+                    invisible="model != 'purchase.order'"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="base_substate_view_list_inherit" model="ir.ui.view">
+        <field name="model">base.substate</field>
+        <field name="inherit_id" ref="base_substate.base_substate_view_list"/>
+        <field name="arch" type="xml">
+            <field name="target_state_value_id" position="after">
+                <field
+                    name="purchase_order_type_ids"
+                    widget="many2many_tags"
+                    optional="hide"/>
+            </field>
+        </field>
+    </record>
+</odoo>
