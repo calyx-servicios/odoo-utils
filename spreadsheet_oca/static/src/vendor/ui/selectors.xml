@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.AutoComplete" owl="1">
+        <div class="o_spreadsheet_oca_autocomplete position-relative">
+            <input
+                type="text"
+                class="o_input w-100"
+                t-att-placeholder="props.placeholder"
+                t-att-disabled="props.disabled"
+                t-att-value="state.term"
+                t-on-input="onInput"
+                t-on-focus="onFocus"
+                t-on-blur="onBlur"
+            />
+            <ul
+                t-if="state.open and state.options.length"
+                class="o_spreadsheet_oca_autocomplete_dropdown dropdown-menu d-block w-100"
+            >
+                <li t-foreach="state.options" t-as="option" t-key="option.value">
+                    <a
+                        class="dropdown-item"
+                        href="#"
+                        t-on-mousedown.prevent="() => this.onSelect(option)"
+                        t-esc="option.label"
+                    />
+                </li>
+            </ul>
+        </div>
+    </t>
+
+    <t t-name="spreadsheet_oca.ModelSelector" owl="1">
+        <AutoComplete
+            value="props.value"
+            placeholder="'Select a model...'"
+            search.bind="search"
+            onSelect.bind="onSelect"
+        />
+    </t>
+
+    <t t-name="spreadsheet_oca.MenuSelector" owl="1">
+        <div class="d-flex align-items-center">
+            <AutoComplete
+                value="displayName"
+                placeholder="'Select a menu...'"
+                search.bind="search"
+                onSelect.bind="onSelect"
+            />
+            <i
+                t-if="props.value"
+                class="fa fa-times btn btn-link text-muted"
+                title="Clear"
+                t-on-click="onClear"
+            />
+        </div>
+    </t>
+
+    <t t-name="spreadsheet_oca.ModelFieldSelector" owl="1">
+        <div class="o_spreadsheet_oca_field_selector position-relative">
+            <input
+                type="text"
+                class="o_input w-100"
+                t-att-value="chain"
+                t-att-readonly="props.readonly"
+                placeholder="Select a field..."
+                t-on-click="toggle"
+                t-on-change="onChainEdited"
+            />
+            <div
+                t-if="state.open"
+                class="o_spreadsheet_oca_field_selector_popover dropdown-menu d-block w-100"
+            >
+                <div class="d-flex justify-content-between px-2 py-1">
+                    <button
+                        class="btn btn-sm btn-link"
+                        t-if="state.browsedChain"
+                        t-on-click="goBack"
+                    >&#8592; Back</button>
+                    <span class="text-muted" t-esc="state.browsedModel" />
+                    <button class="btn btn-sm btn-link" t-on-click="close">Close</button>
+                </div>
+                <ul class="list-unstyled mb-0 o_spreadsheet_oca_field_selector_list">
+                    <li
+                        t-foreach="state.fields"
+                        t-as="field"
+                        t-key="field.name"
+                        class="d-flex justify-content-between align-items-center px-2"
+                    >
+                        <a
+                            href="#"
+                            class="flex-grow-1 text-truncate"
+                            t-on-click.prevent="() => this.selectField(field)"
+                        >
+                            <t t-esc="field.string or field.name" />
+                            <span
+                                t-if="props.isDebugMode"
+                                class="text-muted"
+                            > (<t t-esc="field.name" />)</span>
+                        </a>
+                        <i
+                            t-if="field.relation"
+                            class="fa fa-chevron-right btn btn-link btn-sm"
+                            title="Follow relation"
+                            t-on-click.prevent="() => this.followRelation(field)"
+                        />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="spreadsheet_oca.RecordsSelector" owl="1">
+        <div class="o_spreadsheet_oca_records_selector">
+            <div class="d-flex flex-wrap mb-1">
+                <span
+                    t-foreach="tags"
+                    t-as="tag"
+                    t-key="tag.id"
+                    class="badge rounded-pill o_tag me-1"
+                >
+                    <t t-esc="tag.text" />
+                    <i
+                        class="fa fa-times ms-1"
+                        t-on-click="() => this.removeRecord(tag.id)"
+                    />
+                </span>
+            </div>
+            <AutoComplete
+                value="''"
+                clearOnSelect="true"
+                placeholder="props.placeholder"
+                search.bind="search"
+                onSelect.bind="onSelect"
+            />
+        </div>
+    </t>
+
+</templates>

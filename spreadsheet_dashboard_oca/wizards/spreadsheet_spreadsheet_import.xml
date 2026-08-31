@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_import_form_view">
+        <field
+            name="name"
+        >spreadsheet.spreadsheet.import.form (in spreadsheet_dashboard_oca)</field>
+        <field name="model">spreadsheet.spreadsheet.import</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_import_form_view"
+        />
+        <field name="arch" type="xml">
+            <!-- The domains of the parent view are combined here by hand: the
+                 ``attrs_domain_add`` operation of base_view_inheritance_extension
+                 is not used, so that this module only depends on spreadsheet_oca. -->
+            <field name="name" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': ['&amp;', ('mode', '!=', 'new'), ('mode', '!=', 'dashboard_spreadsheet')], 'required': ['|', ('mode', '=', 'new'), ('mode', '=', 'dashboard_spreadsheet')]}</attribute>
+            </field>
+            <field name="spreadsheet_id" position="after">
+                <field
+                    name="dashboard_id"
+                    attrs="{'invisible': [('mode', 'not in', ['dashboard', 'dashboard_sheet'])], 'required': [('mode', 'in', ['dashboard', 'dashboard_sheet'])]}"
+                    domain="[('can_edit', '=', True)]"
+                    options="{'no_create': True}"
+                />
+                <field
+                    name="dashboard_group_id"
+                    attrs="{'invisible': [('mode', '!=', 'dashboard_spreadsheet')], 'required': [('mode', '=', 'dashboard_spreadsheet')]}"
+                    options="{'no_create': True}"
+                />
+            </field>
+        </field>
+    </record>
+
+
+
+</odoo>

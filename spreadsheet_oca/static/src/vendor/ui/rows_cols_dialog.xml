@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.RowsColsDialog" owl="1">
+        <Dialog title="props.title" close="props.close">
+            <div class="o_spreadsheet_oca_rows_cols_dialog">
+                <div class="mb-2">
+                    <label>
+                        <input type="checkbox" t-model="state.dynamic_rows" />
+                        Dynamic Rows
+                    </label>
+                </div>
+                <div class="mb-2" t-if="state.dynamic_rows">
+                    <label>Number of rows</label>
+                    <input
+                        type="number"
+                        class="o_input"
+                        t-model.number="state.number_of_rows"
+                    />
+                </div>
+                <t t-if="props.canHaveDynamicCols">
+                    <div class="mb-2">
+                        <label>
+                            <input type="checkbox" t-model="state.dynamic_cols" />
+                            Dynamic Columns
+                        </label>
+                    </div>
+                    <div class="mb-2" t-if="state.dynamic_cols">
+                        <label>Number of columns</label>
+                        <input
+                            type="number"
+                            class="o_input"
+                            t-model.number="state.number_of_cols"
+                        />
+                    </div>
+                </t>
+            </div>
+            <t t-set-slot="buttons">
+                <button class="btn btn-primary" t-on-click="onConfirm">Confirm</button>
+                <button
+                    class="btn btn-secondary"
+                    t-on-click="() => this.props.close()"
+                >Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

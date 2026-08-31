@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="web.ListView.buttons" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('o_list_export_xlsx')]" position="after">
+            <button
+                type="button"
+                class="btn btn-secondary fa fa-table o_list_export_spreadsheet"
+                title="Add to spreadsheet"
+                aria-label="Add to spreadsheet"
+            />
+        </xpath>
+    </t>
+</templates>

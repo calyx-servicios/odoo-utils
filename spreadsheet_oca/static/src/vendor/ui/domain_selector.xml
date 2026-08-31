@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.DomainSelector" owl="1">
+        <pre
+            class="o_spreadsheet_oca_domain text-muted mb-0"
+            t-esc="domainString"
+        />
+    </t>
+
+    <t t-name="spreadsheet_oca.DomainSelectorDialog" owl="1">
+        <Dialog title="'Edit domain'" close="props.close">
+            <div class="o_spreadsheet_oca_domain_dialog">
+                <div class="text-muted mb-2">
+                    Domain applied on <b t-esc="props.resModel" />
+                </div>
+                <textarea
+                    class="o_input w-100"
+                    rows="5"
+                    t-att-value="state.value"
+                    t-on-change="onDomainChanged"
+                />
+                <div t-if="state.error" class="text-danger mt-2" t-esc="state.error" />
+                <div t-if="state.matchCount !== undefined" class="text-muted mt-2">
+                    <t t-esc="state.matchCount" /> record(s) match this domain
+                </div>
+            </div>
+            <t t-set-slot="buttons">
+                <button class="btn btn-primary" t-on-click="onConfirm">Confirm</button>
+                <button class="btn btn-secondary" t-on-click="onCheck">
+                    Check domain
+                </button>
+                <button
+                    class="btn btn-secondary"
+                    t-on-click="() => this.props.close()"
+                >Cancel</button>
+            </t>
+        </Dialog>
+    </t>
+
+</templates>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.ControlPanel" owl="1">
+        <div class="o_control_panel">
+            <div class="o_cp_top" t-if="display.top">
+                <div
+                    class="o_cp_top_left d-flex flex-grow-1 align-items-center"
+                    t-if="display['top-left']"
+                >
+                    <t t-slot="control-panel-top-left">
+                        <ol class="breadcrumb">
+                            <t
+                                t-foreach="breadcrumbs"
+                                t-as="breadcrumb"
+                                t-key="breadcrumb.jsId"
+                            >
+                                <li
+                                    t-if="!breadcrumb_last"
+                                    class="breadcrumb-item"
+                                    t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
+                                >
+                                    <a href="#" t-esc="breadcrumb.name" />
+                                </li>
+                                <li t-else="" class="breadcrumb-item active">
+                                    <t t-esc="breadcrumb.name" />
+                                </li>
+                            </t>
+                        </ol>
+                    </t>
+                </div>
+                <div class="o_cp_top_right" t-if="display['top-right']">
+                    <t t-slot="control-panel-top-right" />
+                </div>
+            </div>
+            <div class="o_cp_bottom" t-if="display.bottom">
+                <div class="o_cp_bottom_left" t-if="display['bottom-left']">
+                    <t t-slot="control-panel-bottom-left" />
+                </div>
+                <div class="o_cp_bottom_right" t-if="display['bottom-right']">
+                    <t t-slot="control-panel-bottom-right" />
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

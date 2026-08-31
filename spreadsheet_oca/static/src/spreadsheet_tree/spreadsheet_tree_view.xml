@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t
+        t-name="spreadsheet_oca.ListView.buttons"
+        t-inherit="web.ListView.buttons"
+        t-inherit-mode="primary"
+    >
+        <xpath expr="//button[hasclass('o_list_button_add')]" position="after">
+            <button
+                type="button"
+                class="btn btn-secondary o_button_upload_spreadsheet"
+            >Upload XLSX</button>
+            <input
+                type="file"
+                class="o_spreadsheet_file_input d-none"
+                multiple="multiple"
+                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            />
+        </xpath>
+    </t>
+</templates>

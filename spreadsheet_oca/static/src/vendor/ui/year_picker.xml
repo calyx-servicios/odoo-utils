@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.YearPicker" owl="1">
+        <input
+            type="number"
+            class="o_input o_spreadsheet_oca_year_picker"
+            step="1"
+            t-att-placeholder="props.placeholder"
+            t-att-value="year"
+            t-on-change="onChange"
+        />
+    </t>
+
+</templates>
